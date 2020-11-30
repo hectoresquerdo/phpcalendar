@@ -52,6 +52,9 @@ class EventosController extends Controller
     public function show($id)
     {
         //
+        $data['eventos']=evento::all();
+        return response()->json($data['eventos']);
+
     }
 
     /**

@@ -43,27 +43,34 @@
             },
             dateClick:function(info){
                 $('#txtDate').val(info.dateStr);
-                $('#exampleModal').modal('toggle');
+                $('#exampleModal').modal();
                 console.log(info);
                 calendar.addEvent({title:"Evento", date:info.dateStr })
             },
             eventClick: function(info){
+
+                console.log(info);
                 console.log(info.event.title);
                 console.log(info.event.start);
                 console.log(info.event.end);
+                console.log(info.textColor);
+                console.log(info.backgroundColor);
                 console.log(info.event.extendedProps.descripcion);
+
+                $('#txtID').val(info.event.id)
+                $('#txtTitle').val(info.event.title)
+
+                $('#txtDate').val(info.event.start)
+                $('#txtHour').val(info.event.start)
+
+                $('#txtColor').val(info.event.backgroundColor)
+                $('#txtDescription').val(info.event.extendedProps.descripcion)
+                $('#exampleModal').modal();
             },
-            events:[
-                {
-                    title: "PHP",
-                    start: "2020-11-10 10:00:00",
-                    end: "2020-11-10 11:00:00",
-                    descripcion:"Proyecto de PHP"
-                }
-            ]
+            events:"{{ url('/eventos/show') }}"
 
         });
-        //calendar.setOption('locale', 'Es');
+
 
         calendar.render();
 
