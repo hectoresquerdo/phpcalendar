@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/*Route::get('/', function () {
+    return view('eventos/index');
+});*/
+Route::get('/', [App\Http\Controllers\EventosController::class, 'index']);
+
+Auth::routes();
+
+use App\Http\Controllers\EventosController;
+
+Route::resource('eventos',EventosController::class);
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
